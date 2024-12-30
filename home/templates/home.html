@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome To Our Online Shop</title>
-    <link rel="stylesheet" href="../static/css/home.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
 </head>
 <body>
-<header>
-    <h1>Welcome to our online shop</h1>
-</header>
+    <header>
+        <h1>Welcome to our online shop</h1>
+    </header>
 
+    <main>
+        <div class="content-wrapper">
+            <div class="products">
+                <h2>Products</h2>
+                {% if products %}
+                    <ul>
+                        {% for product in products %}
+                            <li>
+                                {{ product.name }} - {{ product.price }} تومان - {{product.category}}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p>No products available.</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
 </body>
 </html>
