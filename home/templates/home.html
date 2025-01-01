@@ -9,6 +9,13 @@
 <body>
     <header>
         <h1>Welcome to our online shop</h1>
+        <form method="GET" action="{% url 'product_list' %}">
+            <label>
+                <input type="text" name="q" placeholder="Search products..." value="{{ request.GET.q }}">
+            </label>
+            <button type="submit">Search</button>
+        </form>
+
     </header>
 
     <main>

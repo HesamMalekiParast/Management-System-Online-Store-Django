@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Search Results</h1>
+    </header>
+
+    {% if request.GET.q %}
+        <p class="search-result">Search results for: {{ request.GET.q }}</p>
+        {% if product_search %}
+            <ul>
+                {% for product in product_search %}
+                    <li>
+                        {{ product.name }} - {{ product.price }} تومان - {{ product.category }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no_product">No products found.</p>
+        {% endif %}
+    {% else %}
+        <p class="please_enter">Please enter a search term.</p>
+    {% endif %}
+</body>
+</html>
